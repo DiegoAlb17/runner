@@ -99,7 +99,7 @@ class Jugador{
 	}
 
 	disparar(){
-		let bala = new Bala(this.posX, this.posY);
+		let bala = new Bala(this.element.offsetLeft, this.element.offsetTop);
 		window.setInterval( function (){ bala.moverBala() }, 10);
 }
 

@@ -2,14 +2,14 @@ class Bala {
 
 	constructor(posX,posY, element){
 		this._posX = posX;
-		this._posY = posY - 70;
+		this._posY = posY + 30;
 		this._element = document.createElement("div");
 		console.log("Se genero una bala");
 		var imagen = document.createElement("img");
 		imagen.src = "llama.png";
 		imagen.style.width = "40px";
 		this._element.style.position = "absolute";
-		this._element.style.bottom = (posY + 30) + "px";
+		this._element.style.top = (posY + 30) + "px";
 		this._element.style.left = (posX) + "px";
 		this._element.appendChild(imagen);
 		document.body.appendChild(this._element);
