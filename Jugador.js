@@ -1,9 +1,9 @@
 class Jugador{
 
 	constructor(){
+		this._salto = false;
 		this._posX = 10;
 		this._posY = 60;
-		this._image = "stop.png";
 		this._element = document.getElementById('jugador');
 		console.log("Se genero un jugador");
 		this._imagen = document.createElement("img");
@@ -13,6 +13,14 @@ class Jugador{
 		this._element.style.bottom = this._posY +"px";
 		this._element.style.left = "10px";
 		this._element.appendChild(this._imagen);
+	}
+
+	get salto(){
+		return this._salto;
+	}
+
+	set salto(salto){
+		this._salto = salto;
 	}
 
 	get posY(){
@@ -56,26 +64,35 @@ class Jugador{
 	}
 
 	saltar(){
-		console.log("Se ejecuta saltar");
-		this.posY = this.posY + 150;
-		this.element.style.bottom = this.posY + "px";
-		window.setTimeout( function (){
-			console.log("Se ejecuta abajo");
-			this.posY = this.posY - 150;
+		if (this.salto == false){
+			this.salto = true;
+			var that = this;
+			this.imagen.src = "walk.png";
+			this.posY = this.posY + 150;
 			this.element.style.bottom = this.posY + "px";
-			console.log("Se ejecuta abajo2");
-		}, 640);
-	}	
+			window.setTimeout(function(){
+				that.abajo();
+			}, 600);
+		}
+	}
+
+	abajo(){
+		var that = this;
+		this.posY = this.posY - 150;
+		this.element.style.bottom = this.posY + "px";
+		window.setTimeout(function(){
+			that.imagen.src = "stop.png";
+			that.salto = false;
+		}, 500);
+	}
 
 	delante(){
-		console.log("Se ejecuta delante");
 		this.posX = (this.posX + 10);
 		this.element.style.left = this.posX + "px";
 		this.imagen.style.transform = "scaleX(1)";
 	}
 
 	detras(){
-		console.log("Se ejecuta detras");
 		this.posX = (this.posX - 10);
 		this.element.style.left = this.posX + "px";
 		this.imagen.style.transform = "scaleX(-1)";

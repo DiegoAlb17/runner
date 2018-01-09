@@ -3,8 +3,9 @@
 body{
 	margin: 0px;
 	background-image: url("fondo1.png");
+	background-size: 100%;
 	background-color: white;
-	font-size: 25pt;
+	font-size: 22pt;
 	font-family: 'Press Start 2P', cursive;
 	overflow-x:hidden;
 }
@@ -26,7 +27,7 @@ a{
 #suelo{
 	margin: 0px;
 	position: fixed;
-	bottom: 0px;
+	bottom: 00px;
 	width: 100%;
 }
 #suelo img {
@@ -66,5 +67,5 @@ a{
 #texto{
 	position: absolute;
 	top: 200px;
-	left: 400px;
+	left: 18%;
 }

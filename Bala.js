@@ -9,7 +9,7 @@ class Bala {
 		imagen.src = "llama.png";
 		imagen.style.width = "40px";
 		this._element.style.position = "absolute";
-		this._element.style.top = (posY + 30) + "px";
+		this._element.style.bottom = (posY + 30) + "px";
 		this._element.style.left = (posX) + "px";
 		this._element.appendChild(imagen);
 		document.body.appendChild(this._element);
@@ -40,7 +40,6 @@ class Bala {
 	}
 
 	moverBala(){
-		console.log("Se ejecuta moverBala");
 		this.posX = this.posX + 10;
 		this.element.style.left = this.posX + "px";
 		if(this.posX >= screen.width){
@@ -49,7 +48,6 @@ class Bala {
 	}
 
 	borrarBala(){
-		console.log("Se ejecuta borrarBala");
 		this.element.parentNode.removeChild(this.element);
 	}
 }

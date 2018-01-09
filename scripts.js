@@ -35,18 +35,9 @@ var teclaPulsada = function(ev){
 var empezarJuego = function(ev){
 	document.getElementById("texto").innerHTML = "";
 	jugando = true;
-	tiempoDeJuego = window.setInterval(tiempo,10);
+	//tiempoDeJuego = window.setInterval(tiempo,10);
 	window.setInterval(spamEnemigo,4000);
 	jugador = new Jugador();
-}
-
-var saltar = function(){
-	if (salto == false){
-		salto = true;
-		document.getElementById("img_jugador").src = "walk.png";
-		document.getElementById("jugador").style.bottom = "200px";
-		window.setTimeout(bajar, 600);
-	}
 }
 
 var bajar = function(){
@@ -72,6 +63,7 @@ var spamEnemigo = function(){
 	window.setInterval( function (){ enemigo.moverEnemigo() }, 40);
 }
 
+/*
 var tiempo = function(){
 	if (milisegundos < 99){
 		milisegundos++;
@@ -86,4 +78,4 @@ var tiempo = function(){
 		}
 	}
 	document.getElementById("tiempo").innerHTML = minutos+":"+segundos+":"+milisegundos;
-}
+}*/
