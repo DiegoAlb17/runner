@@ -1,18 +1,27 @@
 class Jugador{
 
 	constructor(){
+		this._orientacion = 1;
 		this._salto = false;
 		this._posX = 10;
 		this._posY = 60;
 		this._element = document.getElementById('jugador');
 		console.log("Se genero un jugador");
 		this._imagen = document.createElement("img");
-		this._imagen.src = "stop.png";
+		this._imagen.src = "sonic.gif";
 		this._imagen.style.width = "90px";
 		this._element.style.position = "absolute";
 		this._element.style.bottom = this._posY +"px";
 		this._element.style.left = "10px";
 		this._element.appendChild(this._imagen);
+	}
+
+	get orientacion(){
+		return this._orientacion;
+	}
+
+	set orientacion(orientacion){
+		this._orientacion = orientacion;
 	}
 
 	get salto(){
@@ -67,7 +76,6 @@ class Jugador{
 		if (this.salto == false){
 			this.salto = true;
 			var that = this;
-			this.imagen.src = "walk.png";
 			this.posY = this.posY + 150;
 			this.element.style.bottom = this.posY + "px";
 			window.setTimeout(function(){
@@ -81,7 +89,6 @@ class Jugador{
 		this.posY = this.posY - 150;
 		this.element.style.bottom = this.posY + "px";
 		window.setTimeout(function(){
-			that.imagen.src = "stop.png";
 			that.salto = false;
 		}, 500);
 	}
@@ -90,16 +97,18 @@ class Jugador{
 		this.posX = (this.posX + 10);
 		this.element.style.left = this.posX + "px";
 		this.imagen.style.transform = "scaleX(1)";
+		this.orientacion = 1;
 	}
 
 	detras(){
-		this.posX = (this.posX - 10);
-		this.element.style.left = this.posX + "px";
-		this.imagen.style.transform = "scaleX(-1)";
+			this.posX = (this.posX - 10);
+			this.element.style.left = this.posX + "px";
+			this.imagen.style.transform = "scaleX(-1)";
+			this.orientacion = 0;
 	}
 
 	disparar(){
-		let bala = new Bala(this.element.offsetLeft, this.element.offsetTop);
+		let bala = new Bala(this.element.offsetLeft, this.element.offsetTop, this.orientacion);
 		window.setInterval( function (){ bala.moverBala() }, 10);
 }
 
